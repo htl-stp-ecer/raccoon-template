@@ -35,7 +35,7 @@ class M000SetupMission(SetupMission):
                 seq([
                     wait_for_button(
                         "Calibration\n\n" +
-                        f"The robot will now drive {calibration_distance_cm}cm. Place it so it has enough room to do that.\n" +
+                        f"The robot will now drive {self.calibration_distance_cm}cm. Place it so it has enough room to do that.\n" +
                         "If IR sensors are present, make sure that in the 50cm driving path, every IR sensor passes" +
                         "over at least one black line so that the IR sensors can properly calibrate."
                     ),
@@ -57,7 +57,7 @@ class M000SetupMission(SetupMission):
                     # calibration gate if using #2.
                     # -- #1 --
                     collect_drive(
-                        drive_forward(calibration_distance_cm),
+                        drive_forward(self.calibration_distance_cm),
                     ),
                     # -- #2 --
                     # collect_drive(
@@ -75,7 +75,7 @@ class M000SetupMission(SetupMission):
                     # scale differently from driving forward — so calibrate the
                     # LATERAL axis with its own strafe drive.
                     collect_drive(
-                        strafe_right(calibration_strafe_distance_cm)
+                        strafe_right(self.calibration_strafe_distance_cm)
                     ),
 
                     # Finalize the accumulated setup-calibration evidence exactly once.

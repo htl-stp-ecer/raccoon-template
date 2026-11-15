@@ -6,9 +6,9 @@
 name: examplebot
 uuid: change-this
 
-# format_version 2 is the current project schema (run-configurations, services,
+# format_version 3 is the current project schema (run-configurations, services,
 # scoped calibration profiles). Older projects without this line are read as v1.
-format_version: 2
+format_version: 3
 
 # auto_checkpoints inserts an implicit "wait for button" between missions so you
 # can reposition the robot by hand while debugging. Turn it on for bring-up,
