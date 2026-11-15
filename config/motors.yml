@@ -1,4 +1,4 @@
-# Motor configuration for ExampleBot (four-wheel mecanum drivetrain).
+# ── Motor configuration ──────────────────────────────────────────────────────────────
 #
 # ticks_to_rad: how many radians one encoder tick represents.
 #   Formula: ticks_to_rad = (2 * pi) / ticks_per_revolution
@@ -10,7 +10,8 @@
 #   instead of computing 2π/400000 ≈ 1.57e-05. That makes the controller think
 #   every tick moves the wheel by 400 000 radians and the robot will not move.
 #
-#   To measure your own ticks_per_revolution:
+#   To measure your own ticks_per_revolution, you can use `raccoon calibrate ticks`.
+#   Or, to do it manually:
 #     1. Note the encoder position via BotUI > Sensors or raccoon shell.
 #     2. Manually rotate the wheel one full revolution.
 #     3. Note the new encoder position; the difference is ticks_per_revolution.
@@ -19,8 +20,12 @@
 # vel_lpf_alpha: low-pass filter strength on the measured wheel velocity.
 #   1.0 = no filtering (raw, noisy). 0.1 = heavy filtering (slow to react).
 #   Leave at 1.0 unless you see noisy velocity readings in the logs.
+#
+# bemf_offset: constant offset of the back-EMF velocity reading, measured by `raccoon calibrate`.
+#
+# static_friction_pct: minimum motor power (%) needed to overcome static friction, also from calibrate.
 
-# Wheel naming / ports (viewed from above, robot facing forward):
+# Wheel naming / ports in the template (viewed from above, robot facing forward):
 #
 #     front_left (0)  ┌───────┐  front_right (1)
 #                     │       │
@@ -28,8 +33,7 @@
 #
 # The right-hand motors are mounted mirrored, so they are `inverted: true`.
 # If the robot drives the wrong way or spins instead of driving straight, the
-# fix is almost always one of these `inverted` flags — see the mecanum notes in
-# README.md for the quick wheel-by-wheel test.
+# fix is almost always one of these `inverted` flags.
 #
 # The ticks_to_rad values below are placeholders: measure each wheel for your
 # own robot (the four wheels usually differ slightly).
@@ -37,9 +41,9 @@
 front_left_motor:
   type: Motor
   port: 0
-  inverted: false
+  inverted: true
   calibration:
-    ticks_to_rad: 0.0034
+    ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
     bemf_offset: 0
     static_friction_pct: 10
@@ -49,27 +53,27 @@ front_right_motor:
   port: 1
   inverted: true   # mirrored → invert
   calibration:
-    ticks_to_rad: 0.0034
+    ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
     bemf_offset: 0
     static_friction_pct: 10
 
-rear_left_motor:
+back_left_motor:
   type: Motor
   port: 2
   inverted: false
   calibration:
-    ticks_to_rad: 0.0034
+    ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
     bemf_offset: 0
     static_friction_pct: 10
 
-rear_right_motor:
+back_right_motor:
   type: Motor
   port: 3
   inverted: true   # mirrored → invert
   calibration:
-    ticks_to_rad: 0.0034
+    ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
     bemf_offset: 0
     static_friction_pct: 10

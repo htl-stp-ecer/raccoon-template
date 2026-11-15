@@ -1,11 +1,10 @@
 from raccoon import *
-
 from src.hardware.defs import Defs
 from src.mission_params import MissionParams
 
-
 class M000SetupMission(SetupMission):
-    """Runs ONCE before the match — this is where you prepare, not perform.
+    """
+    Runs ONCE before the match — this is where you prepare, not perform.
 
     Good things to do in setup:
       - Home every servo to a known position.
@@ -19,26 +18,27 @@ class M000SetupMission(SetupMission):
     """
 
     # How long the pre-match setup window is, in seconds.
-    setup_time = 90
+    setup_time = 120
+
+    # Sets the calibration distance (in cm).
+    calibration_distance_cm = 50
+    calibration_strafe_distance_cm = 30
 
     def sequence(self) -> Sequential:
         return seq([
             # Freeze the setup countdown while the operator gets set up.
             pause_setup_timer(),
 
-            # Home the mechanism to a known, safe state.
-            Defs.arm_servo.up(),
-            Defs.claw_servo.open(),
-
-            # Ask for the table-side parameter. `.ask()` shows a number pad on the
-            # robot screen; the value is remembered (persist=True) for next time.
-            MissionParams.approach_distance.ask("Approach distance to object"),
-
-            # Everything below is calibration — skipped by `raccoon run --config dev-nc`
+            # Everything below is calibration — skipped by using a run config with no-calibrate enabled
             # (i.e. when no_calibrate is set) so you can iterate without re-running it.
             run_unless_no_calibrate(
                 seq([
-                    wait_for_button("Place robot on the calibration line, then press"),
+                    wait_for_button(
+                        "Calibration\n\n" +
+                        f"The robot will now drive {calibration_distance_cm}cm. Place it so it has enough room to do that.\n" +
+                        "If IR sensors are present, make sure that in the 50cm driving path, every IR sensor passes" +
+                        "over at least one black line so that the IR sensors can properly calibrate."
+                    ),
 
                     # Resume the countdown: real setup work starts now.
                     start_setup_timer(),
@@ -50,27 +50,42 @@ class M000SetupMission(SetupMission):
                     # Drive forward while sampling the two front IR sensors. The
                     # collected black/white readings become the "default" IR set,
                     # and the drive distance calibrates the FORWARD axis.
+                    # ---
+                    # There's two versions here: one where you only calibrate distance, and one where you also
+                    # calibrate the IR sensors at the same time – use #1 when no IR sensors are present, and
+                    # use #2 if IR sensors are present. You also need to uncomment `require_ir_sets` in the
+                    # calibration gate if using #2.
+                    # -- #1 --
                     collect_drive(
-                        collect_ir_set(
-                            drive_forward(cm=50),
-                            set_name="default",
-                            sensors=[
-                                Defs.front_left_ir_sensor,
-                                Defs.front_right_ir_sensor,
-                            ],
-                        )
+                        drive_forward(calibration_distance_cm),
                     ),
+                    # -- #2 --
+                    # collect_drive(
+                    #     collect_ir_set(
+                    #         drive_forward(calibration_distance_cm),
+                    #         set_name="default",
+                    #         sensors=[
+                    #             Defs.front_left_ir_sensor,
+                    #             Defs.front_right_ir_sensor,
+                    #         ],
+                    #     ),
+                    # ),
 
                     # Mecanum can also move sideways, and the rollers make strafing
                     # scale differently from driving forward — so calibrate the
                     # LATERAL axis with its own strafe drive.
-                    collect_drive(strafe_right(cm=30)),
+                    collect_drive(
+                        strafe_right(calibration_strafe_distance_cm)
+                    ),
 
+                    # Finalize the accumulated setup-calibration evidence exactly once.
                     # Refuse to continue unless calibration actually produced the
                     # data we need. Fails loudly here instead of misbehaving mid-match.
+                    # ---
+                    # → Uncomment the `require_ir_sets` line if you also have IR sensors to calibrate
                     calibration_gate(
                         require_axes=[CalibrationAxis.FORWARD, CalibrationAxis.LATERAL],
-                        require_ir_sets=["default"],
+                        # require_ir_sets=["default"],
                     ),
                 ]),
             ),

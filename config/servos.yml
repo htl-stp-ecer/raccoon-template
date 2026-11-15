@@ -1,15 +1,26 @@
-arm_servo:
-  type: Servo
-  port: 0
-  offset: 0
-  positions:
-    up: 20
-    hold: 90
-    down: 160
-claw_servo:
-  type: Servo
-  port: 1
-  offset: 0
-  positions:
-    open: 40
-    closed: 150
+# ── Servo configuration ──────────────────────────────────────────────────────────────
+#
+# type: Servo. Each entry becomes a servo on the robot (accessible via Defs).
+#
+# port: servo port on the controller (0-3).
+#
+# offset: constant angle shift in degrees, applied to every named position.
+#   Useful when a replacement servo is mounted a few teeth off from the old one:
+#   adjust the offset once instead of re-tuning every position.
+#
+# positions: named angles in degrees. Each name becomes a callable method in
+#   mission code, e.g. Defs.claw_servo.open() instead of a raw angle.
+#   Servo angles are nominally 0-180. Avoid values very close to the limits
+#   (e.g. stay within 10-170) so there is room for an offset if a servo gets
+#   swapped at competition.
+
+# An Example Servo:
+# ---
+# arm_servo:
+#   type: Servo
+#   port: 0
+#   offset: 0
+#   positions:
+#     up: 20
+#     hold: 90
+#     down: 160
