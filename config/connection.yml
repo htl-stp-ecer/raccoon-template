@@ -1,4 +1,4 @@
-pi_address: 1.2.3.4
+pi_address: wombat.local
 pi_port: 8421
 pi_user: pi
 remote_path:

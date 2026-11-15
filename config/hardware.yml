@@ -21,19 +21,20 @@ wait_for_light_sensor:        # tournament light-start sensor (analog)
 
 # ── Line sensors ──────────────────────────────────────────────────────────────
 # Two downward-facing reflectance sensors at the front of the chassis.
-front_left_ir_sensor:
-  type: IRSensor
-  port: 1
-front_right_ir_sensor:
-  type: IRSensor
-  port: 2
+# Uncomment if you have IR sensors, and rename them/change their ports to the ones on your setup if you do.
+#front_left_ir_sensor:
+#  type: IRSensor
+#  port: 1
+#front_right_ir_sensor:
+#  type: IRSensor
+#  port: 2
 
 # A SensorGroup bundles a left/right pair so missions can call line helpers on
 # the group (Defs.front.left / Defs.front.right, follow_line, lineup, ...).
-front:
-  type: SensorGroup
-  left: front_left_ir_sensor
-  right: front_right_ir_sensor
+#front:
+#  type: SensorGroup
+#  left: front_left_ir_sensor
+#  right: front_right_ir_sensor
 
 # Motors (motors.yml) and servos (servos.yml) are merged in as if written here.
 # `!include-merge` splices the file's top-level keys directly into this mapping.

@@ -10,7 +10,4 @@
 # `M010NavigateToObjectMission` lives in m010_navigate_to_object_mission.py.
 
 - M000SetupMission: setup
-- M010NavigateToObjectMission
-- M020CollectObjectMission
-- M030DeliverObjectMission
 - M999ShutdownMission: shutdown
