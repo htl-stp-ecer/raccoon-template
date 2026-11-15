@@ -4,7 +4,7 @@
 
 # raccoon-template
 
-**A clean, fully-commented reference robot built with RaccoonOS.**
+**A clean, fully-commented template project for RaccoonOS.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=ffdd54)
