@@ -135,7 +135,7 @@ jobs:
           app-id: ${{ vars.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
           owner: htl-stp-ecer
-          repositories: raccoon-example
+          repositories: raccoon-template
           permission-contents: write
 
       - uses: actions/checkout@v4

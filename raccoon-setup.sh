@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # raccoon-setup.sh — create a new RaccoonOS robot project from the example repo.
 #
-#   curl -LsSf https://raw.githubusercontent.com/htl-stp-ecer/raccoon-example/main/raccoon-setup.sh | bash
+#   curl -LsSf https://raw.githubusercontent.com/htl-stp-ecer/raccoon-template/main/raccoon-setup.sh | bash
 #
 # What it does:
 #   1. installs git and uv if they are missing
@@ -12,7 +12,7 @@
 #   6. runs `uv sync` and makes the initial commit
 set -euo pipefail
 
-REPO_URL="https://github.com/htl-stp-ecer/raccoon-example"
+REPO_URL="https://github.com/htl-stp-ecer/raccoon-template"
 
 info() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 die()  { printf '\033[1;31merror:\033[0m %s\n' "$*" >&2; exit 1; }

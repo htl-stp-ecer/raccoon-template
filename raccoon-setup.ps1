@@ -1,12 +1,12 @@
 # raccoon-setup.ps1 — create a new RaccoonOS robot project from the example repo.
 #
-#   irm https://raw.githubusercontent.com/htl-stp-ecer/raccoon-example/main/raccoon-setup.ps1 | iex
+#   irm https://raw.githubusercontent.com/htl-stp-ecer/raccoon-template/main/raccoon-setup.ps1 | iex
 #
 # Windows counterpart of raccoon-setup.sh; see that file for the step-by-step overview.
 
 function Invoke-RaccoonSetup {
     $ErrorActionPreference = 'Stop'
-    $RepoUrl = 'https://github.com/htl-stp-ecer/raccoon-example'
+    $RepoUrl = 'https://github.com/htl-stp-ecer/raccoon-template'
 
     function Info($msg) { Write-Host "==> $msg" -ForegroundColor Cyan }
     function Fail($msg) { Write-Host "error: $msg" -ForegroundColor Red; throw $msg }

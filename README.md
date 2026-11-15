@@ -1,14 +1,13 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/htl-stp-ecer/.github/main/profile/raccoon-logo.svg" alt="raccoon-example" width="100"/>
+<img src="https://raw.githubusercontent.com/htl-stp-ecer/.github/main/profile/raccoon-logo.svg" alt="raccoon-template" width="100"/>
 
-# raccoon-example
+# raccoon-template
 
 **A clean, fully-commented reference robot built with RaccoonOS.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=ffdd54)
-![Platform](https://img.shields.io/badge/Platform-KIPR%20Wombat-orange)
 
 > 📖 **Full documentation at [raccoon-docs.pages.dev](https://raccoon-docs.pages.dev/)**
 
@@ -23,15 +22,15 @@ robot itself comes in two variants, and each one lives on **its own branch**:
 
 | Branch | Drivetrain | Contents |
 |:-------|:-----------|:---------|
-| [`differential`](https://github.com/htl-stp-ecer/raccoon-example/tree/differential) | Two-wheeled (differential drive) | Complete example project |
-| [`mecanum`](https://github.com/htl-stp-ecer/raccoon-example/tree/mecanum) | Four-wheeled (mecanum, "omniwheeled") | Complete example project |
+| [`differential`](https://github.com/htl-stp-ecer/raccoon-template/tree/differential) | Two-wheeled (differential drive) | Complete example project |
+| [`mecanum`](https://github.com/htl-stp-ecer/raccoon-template/tree/mecanum) | Four-wheeled (mecanum, "omniwheeled") | Complete example project |
 
 **The `main` branch contains no robot code.** It only holds the setup scripts below
 (plus this README and the license). To see how a robot project is structured, browse
 one of the branches above — the README there explains the layout, the concepts it
 demonstrates, and how to adapt it to your robot.
 
-Other drivetrain types are currently not supported by the template.
+Other drivetrain types are currently not supported.
 
 ---
 
@@ -43,13 +42,13 @@ create the project in and run:
 **Linux / macOS**
 
 ```bash
-curl -LsSf https://raw.githubusercontent.com/htl-stp-ecer/raccoon-example/main/raccoon-setup.sh | bash
+curl -LsSf https://raw.githubusercontent.com/htl-stp-ecer/raccoon-template/main/raccoon-setup.sh | bash
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-irm https://raw.githubusercontent.com/htl-stp-ecer/raccoon-example/main/raccoon-setup.ps1 | iex
+irm https://raw.githubusercontent.com/htl-stp-ecer/raccoon-template/main/raccoon-setup.ps1 | iex
 ```
 
 It will:
@@ -74,18 +73,8 @@ raccoon run
 ```
 
 New to RaccoonOS? Follow the
-[Quick Start](https://raccoon-docs.pages.dev/00-quick-start) from flashing the SD card
+[Getting Started](https://raccoon-docs.pages.dev/00-getting-started) guide, from flashing the SD card
 to a driving robot.
-
----
-
-## Related Repositories
-
-| Repository | What it is |
-|:-----------|:-----------|
-| [raccoon-lib](https://github.com/htl-stp-ecer/raccoon-lib) | The core robotics library |
-| [raccoon-cli](https://github.com/htl-stp-ecer/raccoon-cli) | `raccoon run`, `raccoon calibrate`, … |
-| [documentation](https://github.com/htl-stp-ecer/documentation) | Full platform docs |
 
 ---
 
