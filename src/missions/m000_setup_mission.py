@@ -34,8 +34,9 @@ class M000SetupMission(SetupMission):
                 seq([
                     wait_for_button(
                         "Calibration\n\n" +
-                        f"The robot will now drive {self.calibration_distance_cm}cm. Place it so it has enough room to do that.\n" +
-                        "If IR sensors are present, make sure that in the 50cm driving path, every IR sensor passes" +
+                        f"The robot will now drive {self.calibration_distance_cm}cm.\n" +
+                        "Place it so it has enough room to do that.\n" +
+                        "If IR sensors are present, make sure that in the 50cm driving path, every IR sensor passes " +
                         "over at least one black line so that the IR sensors can properly calibrate."
                     ),
 
