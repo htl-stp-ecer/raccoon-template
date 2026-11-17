@@ -43,4 +43,4 @@ right_motor:
     ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
     bemf_offset: 0
-    static_friction_pct: 1ß
+    static_friction_pct: 10
