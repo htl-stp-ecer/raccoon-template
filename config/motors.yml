@@ -41,7 +41,7 @@
 front_left_motor:
   type: Motor
   port: 0
-  inverted: true
+  inverted: false
   calibration:
     ticks_to_rad: 0.0038
     vel_lpf_alpha: 0.05
