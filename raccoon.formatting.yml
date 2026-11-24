@@ -1,4 +1,4 @@
-auto_format: false
+auto_format: true
 line_length: 88
 skip_string_normalization: false
 skip_magic_trailing_comma: false
