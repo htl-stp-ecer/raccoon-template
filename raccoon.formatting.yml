@@ -1,0 +1,15 @@
+auto_format: false
+line_length: 88
+skip_string_normalization: false
+skip_magic_trailing_comma: false
+hug_brackets: true
+keep_blank_lines: true
+explode_calls:
+  - seq
+  - parallel
+  - background
+  - loop_for
+  - loop_forever
+  - do_while_active
+exclude:
+  - src/hardware/**
