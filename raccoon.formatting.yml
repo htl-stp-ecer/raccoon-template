@@ -8,9 +8,11 @@ explode_calls:
   - seq
   - parallel
   - background
+  - optimize
   - loop_for
   - loop_forever
   - do_while_active
+  - spline
 explode_operators:
   - until
 exclude:
