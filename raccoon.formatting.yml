@@ -11,5 +11,7 @@ explode_calls:
   - loop_for
   - loop_forever
   - do_while_active
+explode_operators:
+  - until
 exclude:
   - src/hardware/**
